@@ -14,12 +14,51 @@
 
   <body>
 
-    <div id="map"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <h1>Chicago Accident Visualizations</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12  col-md-9">
+          <div id="scatter">
+            <!-- We append our chart here. -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12  col-md-9">
+          <div class="article">
+            <h2>We Promise We'll Have Great Vizes</h2>
+            <p>Interesting Analysis</p>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class ="row">
+        <div class="col-md-12">
+          <div id="map" style="width: 800px; height: 600px">
+            <!-- Insert bonus chart-->
+          </div>
+        </div>
+      </div>
+
+      <div class ="row">
+        <div class="col-md-12">
+          <div id="heat_map" style="width: 600px; height: 400px">
+            <!-- Insert bonus chart-->
+          </div>
+        </div>
+      </div>
+    </div>  
+  
 
     <!-- API key -->
     <script type="text/javascript" src="static/js/config.js"></script>
-
-
+    <!-- Code to run JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
     <!-- D3 CDN -->
