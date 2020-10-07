@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chicago Traffic Accidents</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>
+                        Chicago Traffic Accidents
+                    </h1>
+                    <p>
+                        Use this interactive webpage to explore the traffic accidents in Chicago from 2016-2020.
+                    </p>
+                    <!-- <p>
+                        <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                    </p> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="well">
+                            <h5>Search Traffic Accidents</h5>
+                            <div class="col-md-12">
+                              <aside class="filters">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading">Search Criteria</div>
+                                  <div class="panel-body">
+                                    <form>
+                                      <div class="form-group">
+                                        <ul class="list-group" id="filters">
+                                          <li class="filter list-group-item">
+                                            <label for="date">Enter a Date</label>
+                                            <input class="form-control" id="datetime" type="text" placeholder="1/1/2016">
+                                          </li>
+                                          <li class="filter list-group-item">
+                                            <label for="country">Enter a Month</label>
+                                            <input class="form-control" id="country" type="text" placeholder="10">
+                                          </li>
+                                          <li class="filter list-group-item">
+                                            <label for="city">Enter a Neighborhood</label>
+                                            <input class="form-control" id="city" type="text" placeholder="Roscoe Village">
+                                          </li>
+                                          <li class="filter list-group-item">
+                                            <label for="state">Enter a Street</label>
+                                            <input class="form-control" id="state" type="text" placeholder="Pratt Blvd">
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <button id="filter-btn" type="button" class="btn btn-default">Search</button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </aside>
+                            </div>
+                            <!-- <select id="selDataset" onchange="optionChanged(this.value)">
+                            </select> -->
+                          </div>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Product
+                                    </th>
+                                    <th>
+                                        Payment Taken
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        TB - Monthly
+                                    </td>
+                                    <td>
+                                        01/04/2012
+                                    </td>
+                                    <td>
+                                        Default
+                                    </td>
+                                </tr>
+                                <tr class="table-active">
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        TB - Monthly
+                                    </td>
+                                    <td>
+                                        01/04/2012
+                                    </td>
+                                    <td>
+                                        Approved
+                                    </td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        TB - Monthly
+                                    </td>
+                                    <td>
+                                        02/04/2012
+                                    </td>
+                                    <td>
+                                        Declined
+                                    </td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        TB - Monthly
+                                    </td>
+                                    <td>
+                                        03/04/2012
+                                    </td>
+                                    <td>
+                                        Pending
+                                    </td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>
+                                        4
+                                    </td>
+                                    <td>
+                                        TB - Monthly
+                                    </td>
+                                    <td>
+                                        04/04/2012
+                                    </td>
+                                    <td>
+                                        Call in to confirm
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+                    </div>
+                    <div class="col-md-4">
+                        <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+                    </div>
+                    <div class="col-md-4">
+                        <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
