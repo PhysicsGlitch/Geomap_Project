@@ -47,7 +47,7 @@ d3.json(link, function(data) {
         color: "white",
         // Call the chooseColor function to decide which color to color our neighborhood (color based on borough)
         fillColor: 'blue',
-        fillOpacity: 0.5,
+        fillOpacity: 0.2,
         weight: 1.5
       };
     },
@@ -66,7 +66,7 @@ d3.json(link, function(data) {
         mouseout: function(event) {
           layer = event.target;
           layer.setStyle({
-            fillOpacity: 0.5
+            fillOpacity: 0.2
           });
         },
         // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
@@ -75,7 +75,7 @@ d3.json(link, function(data) {
         }
       });
       // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr> <h2>" + feature.properties.area_numbe + "</h2>");
+      layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
 
     }
   }).addTo(myMap);
