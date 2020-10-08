@@ -7,4 +7,5 @@ The part 1, considers the analysis of the number of traffic crashes vs the road 
 and speed limits.
 
 The part 2, considers the analysis of the number of traffic crashes vs the lighting conditions.
+
 All this analysis should be the basis for developing public programs that contribute to a safer way of traveling.
