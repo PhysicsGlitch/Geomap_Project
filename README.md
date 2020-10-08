@@ -9,3 +9,4 @@ and speed limits.
 The part 2, considers the analysis of the number of traffic crashes vs the lighting conditions.
 
 All this analysis should be the basis for developing public programs that contribute to a safer way of traveling.
+47.4% of the traffic crashes occur at day light, in dry roads and no defect roads.
