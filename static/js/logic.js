@@ -16,9 +16,6 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-// Use this link to get the geojson data.
-var link = "static/data/chicago-community-areas.geojson";
-console.log(link);
 
 // Function that will determine the color of a neighborhood based on the borough it belongs to
 function chooseColor(area) {
@@ -37,6 +34,14 @@ function chooseColor(area) {
     return "black";
   }
 }
+
+// Use this link to get the geojson data for the crash data.
+var crashData = "https://grantcheney.com/data/crashes_in_areas.geojson";
+
+
+// Use this link to get the geojson data.
+var link = "static/data/chicago-community-areas.geojson";
+console.log(link);
 
 // Grabbing our GeoJSON data..
 d3.json(link, function(data) {
