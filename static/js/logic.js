@@ -6,12 +6,13 @@ var myMap = L.map("map", {
 });
 
 // Adding tile layer
+
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
   tileSize: 512,
   maxZoom: 18,
   zoomOffset: -1,
-  id: "mapbox/light-v10",
+  id: "vrohm/ckg12jke42t8m19qmb4ansbby",
   accessToken: API_KEY
 }).addTo(myMap);
 
@@ -44,11 +45,11 @@ d3.json(link, function(data) {
     // Style each feature (in this case a neighborhood)
     style: function(feature) {
       return {
-        color: "white",
+        color: "blue",
         // Call the chooseColor function to decide which color to color our neighborhood (color based on borough)
-        fillColor: 'blue',
+        fillColor: 'purple',
         fillOpacity: 0.2,
-        weight: 1.5
+        weight: 1
       };
     },
     // Called on each feature

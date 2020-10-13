@@ -1,5 +1,6 @@
 .DS_Store
 config.py
+config2.py
 **/config.py
 **/config.js
 .ipynb_checkpoints
