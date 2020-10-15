@@ -1,4 +1,4 @@
-mapboxgl.accessToken = "pk.eyJ1IjoibWJlcmtsZXkyNSIsImEiOiJja2ZvbHFvb3gyM2drMzJwbTNkOGt5bWhuIn0.lEHrlthW-3pzreccIeBe4g";
+mapboxgl.accessToken = API_KEY;
 
 var map = new mapboxgl.Map({
   container: 'map', // container element id
@@ -36,8 +36,6 @@ map.on('load', function() {
     var month = parseInt(e.target.value,11);
     // update the map
     map.setFilter('accidents', ['==', ['number', ['get', 'month']], month]);
-  
-    // converting 0-23 hour to AMPM format
 
   
     // update text in the UI
