@@ -1,8 +1,8 @@
 // Creating map object
 var myMap = L.map("map", {
-  center: [41.787, -87.672],
+  center: [41.8705496, -87.6239202],
   //pitch: 9.76,
-  zoom: 11
+  zoom: 12
 });
 
 // Adding tile layer
@@ -12,31 +12,13 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   tileSize: 512,
   maxZoom: 18,
   zoomOffset: -1,
-  id: "vrohm/ckg12jke42t8m19qmb4ansbby",
+  id: "mapbox/dark-v10"/*"vrohm/ckg12jke42t8m19qmb4ansbby"*/,
   accessToken: API_KEY
 }).addTo(myMap);
 
 
-// Function that will determine the color of a neighborhood based on the borough it belongs to
-function chooseColor(area) {
-  switch (area) {
-  case "Brooklyn":
-    return "yellow";
-  case "Bronx":
-    return "red";
-  case "Manhattan":
-    return "orange";
-  case "Queens":
-    return "green";
-  case "Staten Island":
-    return "purple";
-  default:
-    return "black";
-  }
-}
-
-
-// Use this link to get the geojson data.
+// **** CHICAGO AREA MAP LINES ****
+// Use this link to get the geojson data chicago area map.
 var link = "static/data/chicago-community-areas.geojson";
 console.log(link);
 
@@ -47,9 +29,9 @@ d3.json(link, function(data) {
     // Style each feature (in this case a neighborhood)
     style: function(feature) {
       return {
-        color: "blue",
+        color: "purple",
         // Call the chooseColor function to decide which color to color our neighborhood (color based on borough)
-        fillColor: 'purple',
+        fillColor: 'grey',
         fillOpacity: 0.2,
         weight: 1
       };
@@ -129,7 +111,25 @@ d3.json(chiCrashes, function(data) {
   }).addTo(myMap);
 });
 
+var legend = L.control({position: 'bottomleft'});
+    legend.onAdd = function () {
 
+    var div = L.DomUtil.create('div', 'legend');
+    labels = ['<strong>Weather</strong>'],
+    categories = ['BLOWING SNOW','SNOW','CLEAR','FREEZING RAIN\/DRIZZLE','Other'];
+
+    for (var i = 0; i < categories.length; i++) {
+            div.innerHTML += 
+            labels.push(
+                '<i style="background:' + getColor(categories[i] + 1) + '"></i> ' +
+                (categories[i] ? categories[i] : '+'));
+        }
+
+        div.innerHTML = labels.join('<br>');
+    return div;
+};
+
+legend.addTo(myMap);
 
 
 
