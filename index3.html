@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chicago Traffic Accidents</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+  </head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>
+                        <b>Chicago Traffic Accidents</b>
+                    </h1>
+                    <h3>
+                        Scroll through this webpage to explore analysis and visualization of traffic accidents in Chicago from 2016-2020.
+                    </h3>
+                </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    We used the traffic accidents dataset from the cityofchicago.org available through Socrata Open Data API (https://dev.socrata.com/consumers/getting-started.html). 
+                </br>
+                    We also used Chicago neighborhood data from available from Kaggle (https://www.kaggle.com/doyouevendata/chicago-community-areas-geojson) for some of the visualizations.
+                </h3>
+            </div>
+        </div>  
+                </br>
+        <div class="row">
+            <div class="col-md-12">
+                <h2><b>Broadest Overview map of accidents data</b></h2>
+                <h3>
+                    Overview of project. Some conclusions.
+                </h3>
+                <div class ="row">
+                    <div class="col-md-12">
+                      <div id="map" style="width: 2000px; height: 1500px"></div>
+                    </div>
+                </div>
+            </br>
+            </br> 
+            </br>
+            </br>  
+                <h2>
+                    <b>Statistics from Jose</b>
+                </h2>
+                <h3>
+                    Explanation of all of the statistics. Some conclusions.
+                </h3>
+            </br>
+            </br>  
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <img alt="Jose Figures" src="Images/combined.png" style="width:2000px;height:1500px;"/>
+                    </div>
+                </div>
+                        <!-- <h3>
+                            In what road conditions do traffic accidents mainly occur?
+                        </h3>
+                        <img alt="Road Conditions" src="Images/conditions-bar.png" style="width:500px;height:500px;"/>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>
+                            Speed Limits
+                        </h3>
+                        <img alt="Speed Limits" src="Images/speed_limit.png" style="width:500px;height:600px;"/>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>
+                            In what lighting conditions do traffic accidents mainly occur?
+                        </h3>
+                        <img alt="Bubble lighting" src="Images/bubble-lighting.png" style="width:500px;height:600px;"/>
+                    </div>
+                </div>
+            </br>
+            </br>  
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>
+                            Bubble lighting and conditions combined
+                        </h3>
+                        <img alt="Bubble lighting and conditions combined" src="Images/bubble-combined.png" style="width:500px;height:600px;"/>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>
+                            Bubble crashes vs crash type
+                        </h3>
+                        <img alt="Bubble crashes vs crash type" src="Images/bubble-crashvtype.png" style="width:500px;height:600px;"/>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>
+                            What about the defects of the road?
+                            Do they affect the frequency of the traffic crashes?
+                        </h3>
+                        <img alt="Bubble road defects" src="Images/bubble-defects-crashes.png" style="width:500px;height:600px;"/>
+                    </div> -->
+                <!-- </div> -->
+            </br>
+            </br>  
+            </br>
+            </br>
+                <h2>
+                    <b>Crashes by neighborhood</b>
+                </h2>
+                <p>
+                    Chicago neighborhood data was pulled from kaggle and merged with the city of Chicago crash data to for the following table and visualization. 
+                    Some conclusions about neighborhoods.
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Product
+                            </th>
+                            <th>
+                                Payment Taken
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                TB - Monthly
+                            </td>
+                            <td>
+                                01/04/2012
+                            </td>
+                            <td>
+                                Default
+                            </td>
+                        </tr>
+                        <tr class="table-active">
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                TB - Monthly
+                            </td>
+                            <td>
+                                01/04/2012
+                            </td>
+                            <td>
+                                Approved
+                            </td>
+                        </tr>
+                        <tr class="table-success">
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                TB - Monthly
+                            </td>
+                            <td>
+                                02/04/2012
+                            </td>
+                            <td>
+                                Declined
+                            </td>
+                        </tr>
+                        <tr class="table-warning">
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                TB - Monthly
+                            </td>
+                            <td>
+                                03/04/2012
+                            </td>
+                            <td>
+                                Pending
+                            </td>
+                        </tr>
+                        <tr class="table-danger">
+                            <td>
+                                4
+                            </td>
+                            <td>
+                                TB - Monthly
+                            </td>
+                            <td>
+                                04/04/2012
+                            </td>
+                            <td>
+                                Call in to confirm
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </br>
+            </br>
+            </br>
+            </br>
+                <h2>
+                    <b>Crashes by neighborhood.</b>
+                </h2>
+                <h3>
+                    Explanation of data compilation for map. 
+                    Some conclusions.
+                </h3>
+                <img alt="Neighborhood Map" src="Images/grant_choropleth.png" style="width:2000px;height:1500px;" />
+            </br>
+            </br>
+            </br>
+            </br>
+                <h2>
+                    <b>Crashes pre- and post- COVID (with neighborhood analysis as well?)</b>
+                </h2>
+                <h3>
+                    Explanation of data compilation for map.
+                    Some conclusions.
+                    (Some conclusions about neighborhoods?)
+                </h3>
+                <img alt="COVID map" src="Images/COVID-start.PNG" style="width:2000px;height:1500px;" />
+            </div>
+        </div>
+    </div>
+
+    <!-- API key -->
+    <script type="text/javascript" src="config.js"></script>
+    <!-- Leaflet CSS & JS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/> -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- D3 cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script type="text/javascript" src="leaflet-heat.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!-- <script src="js/scripts.js"></script> -->
+    <script src="chicago_accidents.js"></script>
+  </body>
+</html>
