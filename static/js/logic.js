@@ -183,12 +183,12 @@ d3.json(chiCrashes, function(data) {
 // ****** WHERE THE CRASH CIRCLES ARE CREATED!!****
 function crashFeatures(crashdata) {
   
-  crashes = new L.GeoJSON(crashdata, {
+  crashes = L.geoJSON(crashdata, {
     onEachFeature: function (feature, layer) {
       // Setting the marker radius for the city by passing population into the markerSize function
       
       layer.bindPopup("<h3>" + feature.properties.f +
-        "</h3><hr><p>" + new Date(feature.properties.c) + "<hr>" + "<h3>" + "Fatalities" + "</h3>" + feature.properties.i + "<hr>" + "<h3>" + "Weather Conditon" + "</h3>" + feature.geometry.w + "</p>");
+        "</h3><hr><p>" + new Date(feature.properties.c) + "<hr>" + "<h3>" + "Fatalities" + "</h3>" + feature.properties.i + "<hr>" + "<h3>" + "Weather Conditon" + "</h3>" + feature.properties.w + "</p>");
     },
     pointToLayer: function(feature, latlng) {
       return new L.CircleMarker(latlng, {
