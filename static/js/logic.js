@@ -22,8 +22,8 @@ function createMap(darkBaseMap) {
 
   // Overlays that may be toggled on or off
   var overlayMaps = {
-    Crashes: crashes,
-    Chicago: chiAreas
+    "Crashes": crashes,
+    "Neighborhood Border": chiAreas
   };
 
 
@@ -32,7 +32,7 @@ function createMap(darkBaseMap) {
   var myMap = L.map("map", {
     center: [41.8705496, -87.6239202],
     //pitch: 9.76,
-    zoom: 12,
+    zoom: 13,
     layers: [darkBaseMap]
   });
   // Create a layer control
@@ -49,14 +49,14 @@ function createMap(darkBaseMap) {
 
   info.onAdd = function() {
     var div = L.DomUtil.create("div", "legend")
-    depth = ["Crashes", "FREEZING RAIN-DRIZZLE", "CLEAR", "SNOW", "BLOWING SNOW"]
-    // labels = [];
+    // depth = ["Crashes", "FREEZING RAIN-DRIZZLE", "CLEAR", "SNOW", "BLOWING SNOW"]
+    // labels = ["Crashes", "FREEZING RAIN-DRIZZLE", "CLEAR", "SNOW", "BLOWING SNOW"];
     div.innerHTML += "<h4>2019 Crashes</h4>"
-    div.innerHTML += '<i style="background: #BA738B"></i><span>-10 - 10</span><br>';
-    div.innerHTML += '<i style="background: #E54E8D"></i><span>10 - 30</span><br>';
-    div.innerHTML += '<i style="background: #EEBD70"></i><span>30 - 50</span><br>';
-    div.innerHTML += '<i style="background: #27016E"></i><span>50 - 70</span><br>';
-    div.innerHTML += '<i style="background: #009A9F"></i><span>70 - 90+</span><br>';
+    div.innerHTML += '<i style="background: #BA738B"></i><span>CRASHES</span><br>';
+    div.innerHTML += '<i style="background: #E54E8D"></i><span>FREEZING RAIN-DRIZZLE</span><br>';
+    div.innerHTML += '<i style="background: #EEBD70"></i><span>CLEAR</span><br>';
+    div.innerHTML += '<i style="background: #27016E"></i><span>SNOW</span><br>';
+    div.innerHTML += '<i style="background: #009A9F"></i><span>BLOWING SNOW</span><br>';
 
     return div;
   };
@@ -92,35 +92,52 @@ function mapFeatures(geojson) {
     // Called on each feature
     onEachFeature: function(feature, layer) {
       // Set mouse events to change map styling
-      layer.on({
-        // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
-        mouseover: function(event) {
-          layer = event.target;
-          layer.setStyle({
-            fillOpacity: 0.9
-          });
-        },
-        // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-        mouseout: function(event) {
-          layer = event.target;
-          layer.setStyle({
-            fillOpacity: 0.2
-          });
-        },
-        // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
-        click: function(event) {
-          myMap.fitBounds(event.target.getBounds());
-        }
+      layer.on("mouseover", function (event) {
+        layer = event.target;
+        coordinate(event);
+        layer.setStyle({
+          fillOpacity: 0.2
       });
+    });
+      layer.on("mouseout", function (event) {
+        layer = event.target;
+        layer.setStyle({
+          fillOpacity: 0.2
+      });
+    });
+      layer.on("click", function (event) {
+        myMap.fitBounds(event.target.getBounds());
+      });
+    
+
+      // layer.on({
+      //   // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+      //   mouseover: function(event) {
+      //     layer = event.target;
+      //     layer.setStyle({
+      //       fillOpacity: 0.9
+      //     });
+      //   },
+      //   // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+      //   mouseout: function(event) {
+          // layer = event.target;
+          // layer.setStyle({
+          //   fillOpacity: 0.2
+      //     });
+      //   },
+      //   // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+      //   click: function(event) {
+      //     myMap.fitBounds(event.target.getBounds());
+      //   }
+      // });
       // Giving each feature a pop-up with information pertinent to it
       layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
-
+     
     }
-  });
-
-  createMap(chiAreas);
-
+ });
+ createMap(chiAreas);
 }
+
 
 //**********//
 // COLORS FOR THE FEATURES AND LEGEND
@@ -184,37 +201,3 @@ function crashFeatures(crashdata) {
   });
   createMap(crashes)
 }
-
-
-
-
-// // Create map object and set default layers
-// var myMap = L.map("map", {
-//   center: [46.2276, 2.2137],
-//   zoom: 6,
-//   layers: [light, cityLayer]
-// });
-
-// Pass our map layers into our layer control
-// Add the layer control to the map
-//L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-
-// var legend = L.control({position: 'bottomleft'});
-//     legend.onAdd = function () {
-
-//     var div = L.DomUtil.create('div', 'legend');
-//     labels = ['<strong>2019 Weather During Crash</strong>'],
-//     categories = ['BLOWING SNOW','SNOW','CLEAR','FREEZING RAIN\/DRIZZLE','Other'];
-
-//     for (var i = 0; i < categories.length; i++) {
-//             div.innerHTML += 
-//             labels.push(
-//                 '<i style="background:' + getColor(categories[i] + 1) + '"></i> ' +
-//                 (categories[i] ? categories[i] : '+'));
-//         }
-
-//         div.innerHTML = labels.join('<br>');
-//     return div;
-// };
-
-// legend.addTo(myMap);
