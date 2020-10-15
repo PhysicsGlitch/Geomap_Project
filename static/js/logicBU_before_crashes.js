@@ -2,7 +2,7 @@
 var myMap = L.map("map", {
   center: [41.787, -87.672],
   //pitch: 9.76,
-  zoom: 11
+  zoom: 10
 });
 
 // Adding tile layer
@@ -85,52 +85,46 @@ d3.json(link, function(data) {
 });
 
 //**********//
-// COLORS FOR THE FEATURES AND LEGEND
-function getValue(x) {
-  if (x === "BLOWING SNOW") {
-    return "purple"
-  } else if (x === "SNOW") {
-    return "blue"
-  } else if (x === "CLEAR") {
-    return "green"
-  } else if (x === "FREEZING RAIN\/DRIZZLE") {
-    return "yellow"
-  } else {
-    return "red"
-  }
-  
-}
 // ADD CRASHES DATA HERE ** SIMILAR TO EARTHQAUKE MAP FROM LEAFLET PROJECT
 
 // Store our geojson inside crashes
-var chiCrashes = "static/data/crashes_in_2019.geojson";
+var chiCrashes = "../data/crashes_in_2019.geojson";
       
 // Perform a GET request to the query URL
 d3.json(chiCrashes, function(data) {
   // Once we get a response, send the data.features object to the createFeatures function
+  createFeatures(data.features);
+});
+
+// ACTUALLY BUILDING THE MAP FROM THE ABOVE FUNCTIONS
+function createFeatures(geojson) {
+  
+
+  // Define a function we want to run once for each feature in the features array
+  // Give each feature a popup describing the place and time of the earthquake
+  
+
   // Create a GeoJSON layer containing the features array on the earthquakeData object
   // Run the onEachFeature function once for each piece of data 
   // ****** WHERE THE CIRCLES ARE CREATED!!****
-  L.geoJSON(data, {
+  var crashes = L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
       // Setting the marker radius for the city by passing population into the markerSize function
       
-      layer.bindPopup("<h3>" + feature.properties.first_crash_type +
-        "</h3><hr><p>" + new Date(feature.properties.crash_date) + "<hr>" + "<h3>" + "Fatalities" + "</h3>" + feature.properties.injuries_fatal + "<hr>" + "<h3>" + "Weather Conditon" + "</h3>" + feature.geometry.weather_condition + "</p>");
+      layer.bindPopup("<h3>" + feature.properties.place +
+        "</h3><hr><p>" + new Date(feature.properties.time) + "<hr>" + "<h3>" + "Magnitude" + "</h3>" + feature.properties.mag + "<hr>" + "<h3>" + "Depth (km)" + "</h3>" + feature.geometry.coordinates[2] + "</p>");
     },
-    pointToLayer: function(feature, latlng) {
+    pointToLayer: function(geoJsonPoint, latlng) {
       return new L.CircleMarker(latlng, {
-        radius: .3 /*(geoJsonPoint.properties.mag * 3)*/,
-        color: getValue(feature.properties.weather_condition),
-        opacity: .2,
-        fillOpacity: .3
+        radius: 20 /*(geoJsonPoint.properties.mag * 3)*/,
+        color: getValue(geoJsonPoint.geometry.coordinates[2]),
+        opacity: 1,
+        fillOpacity: .7
       });
     }
-  }).addTo(myMap);
-});
-
-
-
-
-
+  });
   
+
+  // Sending our chiCrashes layer to the createMap function
+  createMap(crashes);
+}
