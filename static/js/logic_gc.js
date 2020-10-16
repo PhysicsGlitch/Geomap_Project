@@ -1,7 +1,8 @@
-var container = L.DomUtil.get('map2');
-      if(container != null){
-        container._leaflet_id = null;
-      }
+// var container = L.DomUtil.get('map2');
+//       if(container != null){
+//         container._leaflet_id = null;
+//       }
+var myMap;
 
 
 function createMap(darkBaseMap) {
@@ -9,6 +10,7 @@ function createMap(darkBaseMap) {
   var darkBaseMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     tileSize: 512,
+    // bounds: 5,
     maxZoom: 18,
     zoomOffset: -1,
     id: "mapbox/dark-v10"/*"vrohm/ckg12jke42t8m19qmb4ansbby"*/,
@@ -30,15 +32,17 @@ function createMap(darkBaseMap) {
 
   // Creating map object
   var container = L.DomUtil.get('map2'); if(container != null){ container._leaflet_id = null; }
+  // myMap.dragging.enable();
 
   var myMap = L.map("map2", {
     center: [41.8705496, -87.6239202],
     zoom: 13,
     layers: [darkBaseMap]
+    // bounds: 5
+    // maxBoundsViscosity: 1.0
   });
-  // Create a layer control
-  // Pass in our baseMaps and overlayMaps
-  // Add the layer control to the map
+  
+  // document.getElementById('map2').style.cursor='grab';
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
@@ -61,9 +65,12 @@ function createMap(darkBaseMap) {
 
     return div;
   };
-  // myMap.dragging.enable();
+  
   // Add the info legend to the map
   info.addTo(myMap);
+  
+  
+  
 
 }
 
@@ -81,6 +88,7 @@ d3.json(chiMap, function(data) {
 function mapFeatures(geojson) {
   // Creating a geoJSON layer with the retrieved data
   chiAreas = L.geoJson(geojson, {
+    
     // Style each feature (in this case a neighborhood)
     style: function(feature) {
       return {
@@ -112,14 +120,22 @@ function mapFeatures(geojson) {
             fillOpacity: 0.2
           });
         },
-        // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
-        click: function(event) {
-          myMap.fitBounds(event.target.getBounds());
-        }
+        // function onMapClick(e) {
+        //   fitBounds(e.target.getBounds());
+        // }
+        
+        // // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+        // click: function(event) {
+        //   myMap.fitBounds(event.target.getBounds());
+        // }
       });
+      // mymap.on('click', onMapClick);
     }
+    
  });
 //  chiAreas.on
+
+
  createMap(chiAreas);
 }
 
@@ -184,5 +200,12 @@ function crashFeatures(crashdata) {
       });
     }
   });
+  
+
   createMap(crashes)
 }
+
+// myMap.dragging.disable();
+// myMap.on('click', function() {
+//     myMap.dragging.enable();
+// });
