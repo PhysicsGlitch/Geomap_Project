@@ -3,6 +3,7 @@ var container = L.DomUtil.get('map2');
         container._leaflet_id = null;
       }
 
+
 function createMap(darkBaseMap) {
   // Adding tile layer
   var darkBaseMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -29,9 +30,9 @@ function createMap(darkBaseMap) {
 
   // Creating map object
   var container = L.DomUtil.get('map2'); if(container != null){ container._leaflet_id = null; }
+
   var myMap = L.map("map2", {
     center: [41.8705496, -87.6239202],
-    //pitch: 9.76,
     zoom: 13,
     layers: [darkBaseMap]
   });
@@ -60,6 +61,7 @@ function createMap(darkBaseMap) {
 
     return div;
   };
+  myMap.dragging.enable();
   // Add the info legend to the map
   info.addTo(myMap);
 
@@ -90,51 +92,34 @@ function mapFeatures(geojson) {
       };
     },
     // Called on each feature
-    onEachFeature: function(feature, layer) {
-      // Set mouse events to change map styling
-      layer.on("mouseover", function (event) {
-        layer = event.target;
-        coordinate(event);
-        layer.setStyle({
-          fillOpacity: 0.2
-      });
-    });
-      layer.on("mouseout", function (event) {
-        layer = event.target;
-        layer.setStyle({
-          fillOpacity: 0.2
-      });
-    });
-      layer.on("click", function (event) {
-        myMap.fitBounds(event.target.getBounds());
-      });
     
-
-      // layer.on({
-      //   // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
-      //   mouseover: function(event) {
-      //     layer = event.target;
-      //     layer.setStyle({
-      //       fillOpacity: 0.9
-      //     });
-      //   },
-      //   // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-      //   mouseout: function(event) {
-          // layer = event.target;
-          // layer.setStyle({
-          //   fillOpacity: 0.2
-      //     });
-      //   },
-      //   // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
-      //   click: function(event) {
-      //     myMap.fitBounds(event.target.getBounds());
-      //   }
-      // });
-      // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
-     
+    onEachFeature: function(feature, layer) {
+       // Set mouse events to change map styling
+       myMap.dragging.enable();
+       layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
+       layer.on({
+        // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+        mouseover: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.9
+          });
+        },
+        // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+        mouseout: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.2
+          });
+        },
+        // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+        click: function(event) {
+          myMap.fitBounds(event.target.getBounds());
+        }
+      });
     }
  });
+//  chiAreas.on
  createMap(chiAreas);
 }
 
@@ -159,7 +144,6 @@ function getValue(x) {
 // ADD CRASHES DATA HERE ** SIMILAR TO EARTHQAUKE MAP FROM LEAFLET PROJECT
 /* 
 minified geojson Key mapping:
-
   "c": "crash_date",
   "w": "weather_condition",
   "f": "first_crash_type",
@@ -169,7 +153,6 @@ minified geojson Key mapping:
   "a": "crash_day_of_week",
   "l": "latitude",
   "d": "longitude"
-
 */
 // Store our geojson inside crashes
 var chiCrashes = "static/data/crashes_in_2019min.geojson";
