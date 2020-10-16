@@ -1,4 +1,4 @@
-var container = L.DomUtil.get('map');
+var container = L.DomUtil.get('map2');
       if(container != null){
         container._leaflet_id = null;
       }
@@ -28,8 +28,8 @@ function createMap(darkBaseMap) {
 
 
   // Creating map object
-  var container = L.DomUtil.get('map'); if(container != null){ container._leaflet_id = null; }
-  var myMap = L.map("map", {
+  var container = L.DomUtil.get('map2'); if(container != null){ container._leaflet_id = null; }
+  var myMap = L.map("map2", {
     center: [41.8705496, -87.6239202],
     //pitch: 9.76,
     zoom: 13,
@@ -185,6 +185,8 @@ function crashFeatures(crashdata) {
   
   crashes = L.geoJSON(crashdata, {
     onEachFeature: function (feature, layer) {
+    
+     
       // Setting the marker radius for the city by passing population into the markerSize function
       
       layer.bindPopup("<h3>" + feature.properties.f +
