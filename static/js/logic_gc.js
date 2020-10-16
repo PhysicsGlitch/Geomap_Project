@@ -61,7 +61,7 @@ function createMap(darkBaseMap) {
 
     return div;
   };
-  myMap.dragging.enable();
+  // myMap.dragging.enable();
   // Add the info legend to the map
   info.addTo(myMap);
 
@@ -95,7 +95,7 @@ function mapFeatures(geojson) {
     
     onEachFeature: function(feature, layer) {
        // Set mouse events to change map styling
-       myMap.dragging.enable();
+       
        layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
        layer.on({
         // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
