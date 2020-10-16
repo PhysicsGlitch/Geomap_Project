@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chicago Traffic Accidents</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Chicago Traffic Accidents</h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well">
+          <h5>Search Traffic Accidents</h5>
+          <div class="col-md-6">
+            <aside class="filters">
+              <div class="panel panel-default">
+                <div class="panel-heading">Search Criteria</div>
+                <div class="panel-body">
+                  <form>
+                    <div class="form-group">
+                      <ul class="list-group" id="filters">
+                        <li class="filter list-group-item">
+                          <label for="date">Enter a Date</label>
+                          <input class="form-control" id="datetime" type="text" placeholder="1/1/2016">
+                        </li>
+                        <li class="filter list-group-item">
+                          <label for="country">Enter a Month</label>
+                          <input class="form-control" id="country" type="text" placeholder="10">
+                        </li>
+                        <li class="filter list-group-item">
+                          <label for="city">Enter a Neighborhood</label>
+                          <input class="form-control" id="city" type="text" placeholder="Roscoe Village">
+                        </li>
+                        <li class="filter list-group-item">
+                          <label for="state">Enter a Street</label>
+                          <input class="form-control" id="state" type="text" placeholder="Pratt Blvd">
+                        </li>
+                      </ul>
+                    </div>
+                    <button id="filter-btn" type="button" class="btn btn-default">Search</button>
+                  </form>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <!-- <select id="selDataset" onchange="optionChanged(this.value)">
+          </select> -->
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Search Results</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="bar"></div>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+  </div>
+
+
+    <div id="map"></div>
+
+    <!-- API key -->
+    <script type="text/javascript" src="static/js/config.js"></script>
+
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- JS -->
+    <script type="text/javascript" src="static/js/chicago_accidents.js"></script>
+    <!-- <script type="text/javascript" src="static/js/heatmap.js"></script> -->
+
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+
+
+  </body>
+
+</html>

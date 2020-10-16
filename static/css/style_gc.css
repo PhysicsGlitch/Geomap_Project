@@ -1,0 +1,75 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+#map2,
+body,
+html {
+  height: 100%;
+}
+.legend {
+  background: white!important;
+  border-radius: 5px;
+  line-height: 20px;
+  padding: 5px;
+
+}
+.legend i {
+  width: 20px!important;
+  height: 20px;
+  margin-right: 10px;
+  float: left;
+}
+/* .div-icon {
+  pointer-events: none;
+} */
+
+h1 {
+    text-align: center;
+    font-size: 80px
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 60px;
+  }
+  
+  h3 {
+    text-align: center;
+    font-size: 40px
+  }
+  
+  p {
+    text-align: center;
+    font-size: 30px
+  }
+  
+  /* div {
+    padding-top: 50px;
+    padding-right: 80px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+  } */
+  
+  .row {
+    padding-right: 400px;
+    padding-left: 400px;
+    width: auto;
+    height: auto;
+  }
+  
+  .nav-item {
+    text-align: center;
+    font-size: 60px;
+  }
+  
+  .col-md-8 {
+    width: auto;
+    height: auto;
+  }
+  
+  .col-md-12 {
+    width: auto;
+    height: auto;
+  }
