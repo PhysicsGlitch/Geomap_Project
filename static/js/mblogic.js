@@ -1,7 +1,7 @@
 mapboxgl.accessToken = API_KEY;
 
 var map = new mapboxgl.Map({
-  container: 'map', // container element id
+  container: 'map3', // container element id
   style: 'mapbox://styles/mapbox/light-v10',
   center: [-87.6298, 41.8781], // initial map center in [lon, lat]
   zoom: 12
