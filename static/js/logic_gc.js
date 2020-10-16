@@ -11,7 +11,7 @@ function createMap(darkBaseMap) {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     tileSize: 512,
     // bounds: 5,
-    maxZoom: 18,
+    maxZoom: 19,
     zoomOffset: -1,
     id: "mapbox/dark-v10"/*"vrohm/ckg12jke42t8m19qmb4ansbby"*/,
     accessToken: API_KEY
@@ -35,9 +35,9 @@ function createMap(darkBaseMap) {
   // myMap.dragging.enable();
 
   var myMap = L.map("map2", {
-    center: [41.8705496, -87.6239202],
-    zoom: 13,
-    layers: [darkBaseMap]
+    center: [41.8935256, -87.6250341],
+    zoom: 14,
+    layers: [darkBaseMap, crashes]
     // bounds: 5
     // maxBoundsViscosity: 1.0
   });
