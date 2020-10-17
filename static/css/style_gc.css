@@ -1,0 +1,26 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+#map2,
+body,
+html {
+  height: 100%;
+}
+.legend {
+  background: white!important;
+  border-radius: 5px;
+  line-height: 20px;
+  padding: 5px;
+
+}
+.legend i {
+  width: 20px!important;
+  height: 20px;
+  margin-right: 10px;
+  float: left;
+}
+/* .div-icon {
+  pointer-events: none;
+} */
