@@ -37,7 +37,7 @@ function createMap(darkBaseMap) {
   var myMap = L.map("map2", {
     center: [41.8935256, -87.6250341],
     zoom: 14,
-    layers: [darkBaseMap, crashes]
+    layers: [darkBaseMap]
     // bounds: 5
     // maxBoundsViscosity: 1.0
   });
