@@ -1,14 +1,17 @@
-var container = L.DomUtil.get('map2');
-      if(container != null){
-        container._leaflet_id = null;
-      }
+// var container = L.DomUtil.get('map2');
+//       if(container != null){
+//         container._leaflet_id = null;
+//       }
+var myMap;
+
 
 function createMap(darkBaseMap) {
   // Adding tile layer
   var darkBaseMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     tileSize: 512,
-    maxZoom: 18,
+    // bounds: 5,
+    maxZoom: 19,
     zoomOffset: -1,
     id: "mapbox/dark-v10"/*"vrohm/ckg12jke42t8m19qmb4ansbby"*/,
     accessToken: API_KEY
@@ -29,15 +32,17 @@ function createMap(darkBaseMap) {
 
   // Creating map object
   var container = L.DomUtil.get('map2'); if(container != null){ container._leaflet_id = null; }
+  // myMap.dragging.enable();
+
   var myMap = L.map("map2", {
-    center: [41.8705496, -87.6239202],
-    //pitch: 9.76,
-    zoom: 13,
-    layers: [darkBaseMap]
+    center: [41.8935256, -87.6250341],
+    zoom: 14,
+    layers: [darkBaseMap, crashes]
+    // bounds: 5
+    // maxBoundsViscosity: 1.0
   });
-  // Create a layer control
-  // Pass in our baseMaps and overlayMaps
-  // Add the layer control to the map
+  
+  // document.getElementById('map2').style.cursor='grab';
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
@@ -60,8 +65,12 @@ function createMap(darkBaseMap) {
 
     return div;
   };
+  
   // Add the info legend to the map
   info.addTo(myMap);
+  
+  
+  
 
 }
 
@@ -79,6 +88,7 @@ d3.json(chiMap, function(data) {
 function mapFeatures(geojson) {
   // Creating a geoJSON layer with the retrieved data
   chiAreas = L.geoJson(geojson, {
+    
     // Style each feature (in this case a neighborhood)
     style: function(feature) {
       return {
@@ -90,51 +100,42 @@ function mapFeatures(geojson) {
       };
     },
     // Called on each feature
-    onEachFeature: function(feature, layer) {
-      // Set mouse events to change map styling
-      layer.on("mouseover", function (event) {
-        layer = event.target;
-        coordinate(event);
-        layer.setStyle({
-          fillOpacity: 0.2
-      });
-    });
-      layer.on("mouseout", function (event) {
-        layer = event.target;
-        layer.setStyle({
-          fillOpacity: 0.2
-      });
-    });
-      layer.on("click", function (event) {
-        myMap.fitBounds(event.target.getBounds());
-      });
     
-
-      // layer.on({
-      //   // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
-      //   mouseover: function(event) {
-      //     layer = event.target;
-      //     layer.setStyle({
-      //       fillOpacity: 0.9
-      //     });
-      //   },
-      //   // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-      //   mouseout: function(event) {
-          // layer = event.target;
-          // layer.setStyle({
-          //   fillOpacity: 0.2
-      //     });
-      //   },
-      //   // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
-      //   click: function(event) {
-      //     myMap.fitBounds(event.target.getBounds());
-      //   }
-      // });
-      // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
-     
+    onEachFeature: function(feature, layer) {
+       // Set mouse events to change map styling
+       
+       layer.bindPopup("<h1>" + feature.properties.community + "</h1> <hr>" + "<h2>" + "Chicago Area" + "</h2>" + "<h2>" + feature.properties.area_numbe + "</h2>");
+       layer.on({
+        // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+        mouseover: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.9
+          });
+        },
+        // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+        mouseout: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.2
+          });
+        },
+        // function onMapClick(e) {
+        //   fitBounds(e.target.getBounds());
+        // }
+        
+        // // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+        // click: function(event) {
+        //   myMap.fitBounds(event.target.getBounds());
+        // }
+      });
+      // mymap.on('click', onMapClick);
     }
+    
  });
+//  chiAreas.on
+
+
  createMap(chiAreas);
 }
 
@@ -199,5 +200,12 @@ function crashFeatures(crashdata) {
       });
     }
   });
+  
+
   createMap(crashes)
 }
+
+// myMap.dragging.disable();
+// myMap.on('click', function() {
+//     myMap.dragging.enable();
+// });
