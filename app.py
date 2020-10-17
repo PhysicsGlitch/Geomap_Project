@@ -27,18 +27,18 @@ def home():
     return render_template("index.html")
 
 @app.route("/fatalities")
-    def fatality_dict():
-        return create_dictionary('fatality_db')
+def fatality_dict():
+    return create_dictionary('fatality_db')
 
 @app.route("/hit_run_2020")
-    def hit_run_2020:
+def hit_run_2020():
         return create_dictionary('hit_run_2020')
 @app.route("/hit_run_2019")
-    def hit_run_2019:
-        return create_dictionary('hit_run_2019')
+def hit_run_2019():
+    return create_dictionary('hit_run_2019')
 @app.route("/hit_run_2018")
-    def hit_run_2018():
-        return create_dictionary('hit_run_2018')
+def hit_run_2018():
+    return create_dictionary('hit_run_2018')
 
 if __name__ == "__main__":
     app.run(debug=True)
