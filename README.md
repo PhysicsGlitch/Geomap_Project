@@ -22,7 +22,7 @@ or 20%.
 
 ## Key Questions:
 
-Several overriding questions informed our project. What is an overall picture of Chicago accidents? What is the impact of covid? What is the typical
+Several overriding questions informed our project. What is an overall picture of Chicago accidents? What is the impact of weather? What is the impact of covid? What is the typical
 type of accident? And are there specific hotspots of accidents?
 
 This information is useful for both city planners, insurance providers and residents of the city to be safer on the road and look at Chicagos' traffic ecosystem. One notable
