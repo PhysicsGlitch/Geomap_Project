@@ -62,7 +62,11 @@ properly formatted json on the user frontend. This was a simple way to create a 
 
 Due to time constraints we were not able to load all of the GeoJSONS, only regular jsons files. MongoDB does support GeoJSON format. However, it does not natively accept GeoJSON files without modification.
 Also MongoDB's native REST interface was deprecated a few versions ago and heroku's mlab Mongo support is also being shutdown on November 10 and was unavalible. This complicated both 
-getting resources for learning and more elegant solutions to our database construction. To fix this issue we would have had to either rewritten our GeoJSON files according to MongoDB's 
+getting resources for learning and more elegant solutions to our database construction. 
+
+A starter code title geojson_app.py was put in the master branch. The difference between regular json and geojson is simply that MongoDB stores the features of a GeoJSON
+as a field type. To export a MongoDB geojson for plotting a new function was created to pull the required fields into a query and then load them as a dictionary to the
+javascript that plots the final coordinates. On the backend To fix this issue we would have had to either rewritten our GeoJSON files according to MongoDB's 
 documentation https://docs.mongodb.com/manual/reference/geojson/ with an embedded document. That is somewhat time consuming. Alternatively, there are ways to run a GeoJSON through a Python script 
 that modifies it for uploading to a MongoDB such as this:https://github.com/rtbigdata/geojson-mongo-import.py The javascript call back functions would have to have been modified according to the specific field 
 names in MongoDB. Those would be the final steps to have a full flask/MongoDB app running that connects our backend database to the frontend user interface. We have the prototype and architecture in place,
